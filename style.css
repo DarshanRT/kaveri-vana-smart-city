@@ -15,8 +15,6 @@ body {
     justify-content: center;
     align-items: flex-start; /* Aligns content towards the top */
     min-height: 100vh;
-    overflow: hidden; /* Prevents scrolling */
-    position: relative;
 }
 
 /* Main Container */
@@ -98,35 +96,6 @@ blockquote {
     border-left: 4px solid #4CAF50;
     padding-left: 1rem;
     margin-top: 2rem;
-}
-
-/* Butterfly Animation */
-@keyframes fly {
-    0% {
-        transform: translateX(0) translateY(0) rotate(0deg);
-    }
-    25% {
-        transform: translateX(50px) translateY(-30px) rotate(10deg);
-    }
-    50% {
-        transform: translateX(100px) translateY(0) rotate(-10deg);
-    }
-    75% {
-        transform: translateX(150px) translateY(30px) rotate(15deg);
-    }
-    100% {
-        transform: translateX(200px) translateY(0) rotate(0deg);
-    }
-}
-
-.butterfly {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 30px;
-    height: 30px;
-    background: url('butterfly.png') no-repeat center/contain;
-    animation: fly 5s infinite linear;
 }
 
 /* Responsive Design */
