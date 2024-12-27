@@ -1,1 +1,157 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.aurora {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(63,94,251,0.2) 0%, rgba(252,70,107,0.2) 50%);
+    z-index: -1;
+    animation: aurora 10s infinite alternate;
+}
+
+@keyframes aurora {
+    0% {
+        transform: translateX(-10%) translateY(-10%) scale(1.2);
+    }
+    100% {
+        transform: translateX(10%) translateY(10%) scale(1.5);
+    }
+}
+
+header {
+    text-align: center;
+    padding: 50px 20px;
+    animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+/* Section Styling */
+section {
+    margin: 30px auto;
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    transform: perspective(1000px) rotateX(1deg);
+    animation: slideUp 1.5s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* List and Links */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    transition: color 0.3s, transform 0.3s;
+}
+
+li:hover {
+    color: #ffdd00;
+    transform: scale(1.1);
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #ffdd00;
+}
+
+/* Table and Blockquote */
+dl {
+    margin: 20px 0;
+    font-size: 1.1rem;
+}
+
+dt {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+dd {
+    margin-left: 20px;
+}
+
+blockquote {
+    font-style: italic;
+    color: #ffdd00;
+    margin: 20px 0;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+footer a {
+    color: #ffdd00;
+}
+
+/* Hover Effects */
+header:hover, section:hover {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    transform: perspective(1000px) rotateX(0deg) scale(1.02);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    p, li {
+        font-size: 1rem;
+    }
+}
 
