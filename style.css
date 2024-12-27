@@ -6,6 +6,7 @@ body {
     background: linear-gradient(135deg, #1f1c2c, #928dab);
     color: #fff;
     overflow-x: hidden;
+    position: relative;
 }
 
 .aurora {
@@ -25,6 +26,42 @@ body {
     }
     100% {
         transform: translateX(10%) translateY(10%) scale(1.5);
+    }
+}
+
+/* DAA-Themed Animation */
+.daa-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.daa-node {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    animation: moveNodes 15s linear infinite;
+}
+
+@keyframes moveNodes {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-100vh) translateX(50vw) scale(0.8);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-200vh) translateX(-50vw) scale(0.5);
+        opacity: 0.3;
     }
 }
 
@@ -154,4 +191,3 @@ header:hover, section:hover {
         font-size: 1rem;
     }
 }
-
