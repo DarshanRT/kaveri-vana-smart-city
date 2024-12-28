@@ -3,8 +3,8 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background: #fff;
-    color: #000;
+    background: #121212;
+    color: #fff;
     overflow-x: hidden;
     position: relative;
 }
@@ -45,7 +45,7 @@ body {
     position: absolute;
     width: 10px;
     height: 10px;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 50%;
     animation: moveNodes 15s linear infinite;
 }
@@ -69,6 +69,12 @@ header {
     text-align: center;
     padding: 50px 20px;
     animation: fadeIn 2s;
+    transition: background-color 0.3s;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+header:hover {
+    background-color: #00ffff;
 }
 
 @keyframes fadeIn {
@@ -82,7 +88,7 @@ header {
 
 h1 {
     font-size: 2.5rem;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 p {
@@ -95,9 +101,9 @@ section {
     width: 90%;
     max-width: 800px;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.1);
     border-radius: 15px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
     transform: perspective(1000px) rotateX(1deg);
     animation: slideUp 1.5s ease-out;
     transition: background-color 0.3s;
@@ -137,7 +143,7 @@ li:hover {
 
 a {
     text-decoration: none;
-    color: #000;
+    color: #fff;
     transition: color 0.3s;
 }
 
@@ -172,7 +178,7 @@ footer {
     text-align: center;
     padding: 20px;
     font-size: 1rem;
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.1);
 }
 
 footer a {
