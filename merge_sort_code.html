@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Sort Implementation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+            color: #000; /* Set general text color to black */
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF; /* Retain distinct heading color */
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+            font-family: "Courier New", Courier, monospace;
+            color: #000; /* Set code text color to black */
+        }
+        code {
+            color: #000; /* Set inline code text color to black */
+        }
+    </style>
+</head>
+<body>
+    <h1>Merge Sort Implementation</h1>
+    <pre>
+<code>
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+void merge(vector&lt;int&gt; &amp;arr, int low, int mid, int high) {
+    vector&lt;int&gt; temp; 
+    int left = low;      
+    int right = mid + 1;   
+
+    while (left &lt;= mid &amp;&amp; right &lt;= high) {
+        if (arr[left] &lt;= arr[right]) {
+            temp.push_back(arr[left]);
+            left++;
+        }
+        else {
+            temp.push_back(arr[right]);
+            right++;
+        }
+    }
+
+    while (left &lt;= mid) {
+        temp.push_back(arr[left]);
+        left++;
+    }
+
+    while (right &lt;= high) {
+        temp.push_back(arr[right]);
+        right++;
+    }
+
+    for (int i = low; i &lt;= high; i++) {
+        arr[i] = temp[i - low];
+    }
+}
+
+void mergeSort(vector&lt;int&gt; &amp;arr, int low, int high) {
+    if (low &gt;= high) return;
+    int mid = (low + high) / 2 ;
+    mergeSort(arr, low, mid);  
+    mergeSort(arr, mid + 1, high); 
+    merge(arr, low, mid, high);  
+}
+
+int main() {
+    vector&lt;int&gt; arr = {9, 4, 7, 6, 3, 1, 5}  ;
+    int n = 7;
+
+    cout &lt;&lt; "Before Sorting Array: " &lt;&lt; endl;
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; arr[i] &lt;&lt; " "  ;
+    }
+    cout &lt;&lt; endl;
+
+    mergeSort(arr, 0, n - 1);
+
+    cout &lt;&lt; "After Sorting Array: " &lt;&lt; endl;
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; arr[i] &lt;&lt; " "  ;
+    }
+    cout &lt;&lt; endl;
+
+    return 0 ;
+}
+</code>
+    </pre>
+</body>
+</html>
