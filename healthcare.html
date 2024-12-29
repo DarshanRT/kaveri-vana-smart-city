@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Healthcare and Wellness</title>
+    <title>Healthcare and Waste Management</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,6 +15,9 @@
             color: #333;
             text-align: center;
             animation: fadeIn 2s;
+        }
+        h2 {
+            color: #007BFF;
         }
         table {
             width: 100%;
@@ -62,8 +65,9 @@
 </head>
 <body>
 
-<h1>Healthcare and Wellness</h1>
+<h1>Healthcare and Waste Management</h1>
 
+<h2>Healthcare and Wellness</h2>
 <table>
     <thead>
         <tr>
@@ -122,6 +126,69 @@
                 </ul>
             </td>
             <td><button onclick="window.location.href='brute_force_code.html'">Brute Force String Search Implementation</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Waste Management</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Algorithm</th>
+            <th>Use Case</th>
+            <th>Related SDGs</th>
+            <th>View Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>i) Efficient Waste Collection and Distribution</strong></td>
+            <td>Breadth-First Search (BFS)</td>
+            <td>Map urban areas to identify optimal waste collection points and ensure efficient routes for waste collection trucks.</td>
+            <td>
+                <ul>
+                    <li><strong>SDG 11:</strong> Sustainable Cities and Communities – Promotes effective waste management in urban areas.</li>
+                    <li><strong>SDG 12:</strong> Responsible Consumption and Production – Encourages sustainable waste handling and reduction practices.</li>
+                </ul>
+            </td>
+            <td><button onclick="window.location.href='bfs_code.html'">BFS Implementation</button></td>
+        </tr>
+        <tr>
+            <td><strong>ii) Recycling Facility Optimization</strong></td>
+            <td>Dijkstra’s Algorithm</td>
+            <td>Optimize transportation of recyclable materials to the nearest processing facilities to reduce costs and energy consumption.</td>
+            <td>
+                <ul>
+                    <li><strong>SDG 12:</strong> Responsible Consumption and Production – Supports the creation of a circular economy.</li>
+                    <li><strong>SDG 13:</strong> Climate Action – Reduces carbon footprint by minimizing transportation inefficiencies.</li>
+                </ul>
+            </td>
+            <td><button onclick="window.location.href='dijkstra_code.html'">Dijkstra’s Algorithm Implementation</button></td>
+        </tr>
+        <tr>
+            <td><strong>iii) Hazardous Waste Prioritization</strong></td>
+            <td>Heap Sort</td>
+            <td>Rank and prioritize hazardous waste based on risk levels for proper and timely disposal.</td>
+            <td>
+                <ul>
+                    <li><strong>SDG 3:</strong> Good Health and Well-Being – Minimizes health risks from hazardous waste.</li>
+                    <li><strong>SDG 15:</strong> Life on Land – Ensures safe disposal to protect ecosystems and biodiversity.</li>
+                </ul>
+            </td>
+            <td><button onclick="window.location.href='heap_sort_code.html'">Heap Sort Implementation</button></td>
+        </tr>
+        <tr>
+            <td><strong>iv) Waste Tracking and Monitoring</strong></td>
+            <td>HashMaps</td>
+            <td>Search and monitor waste generation patterns by analyzing records for trends, anomalies, or inefficiencies.</td>
+            <td>
+                <ul>
+                    <li><strong>SDG 16:</strong> Peace, Justice, and Strong Institutions – Encourages transparency and accountability in waste management systems.</li>
+                    <li><strong>SDG 9:</strong> Industry, Innovation, and Infrastructure – Promotes smart technologies for efficient waste tracking.</li>
+                </ul>
+            </td>
+            <td><button onclick="window.location.href='hashmaps_code.html'">HashMaps Implementation</button></td>
         </tr>
     </tbody>
 </table>
