@@ -3,8 +3,9 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background: url('/mnt/data/background .png') no-repeat center center fixed;
+    background: url('/mnt/data/background.png') no-repeat center center fixed;
     background-size: cover;
+    background-color: #2e3b4e; /* Fallback color for better readability */
     color: #fff;
     overflow-x: hidden;
     position: relative;
@@ -13,7 +14,7 @@ body {
 header {
     text-align: center;
     padding: 50px 20px;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.8); /* Darker background for contrast */
     border-radius: 15px;
     margin: 20px auto;
     width: 90%;
@@ -22,7 +23,7 @@ header {
 
 h1 {
     font-size: 2.5rem;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Stronger shadow for readability */
 }
 
 p {
@@ -34,9 +35,9 @@ section {
     margin: 30px auto;
     width: 90%;
     max-width: 1200px;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9); /* Darker background for table */
     border-radius: 15px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7); /* Enhanced shadow for depth */
     padding: 20px;
 }
 
@@ -53,13 +54,13 @@ section th, section td {
 }
 
 section th {
-    background-color: #6a1b9a;
+    background-color: #3949ab; /* Dark blue for header */
     color: #fff;
     text-transform: uppercase;
 }
 
 section td {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.15);
     color: #fff;
 }
 
@@ -68,7 +69,7 @@ section td {
     display: inline-block;
     padding: 10px 20px;
     color: #fff;
-    background-color: #6a1b9a;
+    background-color: #3949ab; /* Dark blue for buttons */
     border-radius: 25px;
     text-decoration: none;
     font-weight: bold;
@@ -77,7 +78,7 @@ section td {
 }
 
 .view-code:hover {
-    background-color: #ff4081;
+    background-color: #1e88e5; /* Lighter blue for hover */
 }
 
 /* Responsive Design */
