@@ -3,87 +3,21 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background: #121212;
+    background: url('/mnt/data/background .png') no-repeat center center fixed;
+    background-size: cover;
     color: #fff;
     overflow-x: hidden;
     position: relative;
 }
 
-.aurora {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(63,94,251,0.2) 0%, rgba(252,70,107,0.2) 50%);
-    z-index: -1;
-    animation: aurora 10s infinite alternate;
-}
-
-@keyframes aurora {
-    0% {
-        transform: translateX(-10%) translateY(-10%) scale(1.2);
-    }
-    100% {
-        transform: translateX(10%) translateY(10%) scale(1.5);
-    }
-}
-
-/* DAA-Themed Animation */
-.daa-animation {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: -1;
-}
-
-.daa-node {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    animation: moveNodes 15s linear infinite;
-}
-
-@keyframes moveNodes {
-    0% {
-        transform: translateY(0) translateX(0) scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: translateY(-100vh) translateX(50vw) scale(0.8);
-        opacity: 0.6;
-    }
-    100% {
-        transform: translateY(-200vh) translateX(-50vw) scale(0.5);
-        opacity: 0.3;
-    }
-}
-
 header {
     text-align: center;
     padding: 50px 20px;
-    animation: fadeIn 2s;
-    transition: background-color 0.3s;
     background: rgba(0, 0, 0, 0.7);
-}
-
-header:hover {
-    background-color: #00ffff;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    border-radius: 15px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
 }
 
 h1 {
@@ -95,99 +29,55 @@ p {
     font-size: 1.2rem;
 }
 
-/* Section Styling */
+/* Table Styling */
 section {
     margin: 30px auto;
     width: 90%;
-    max-width: 800px;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    background: rgba(0, 0, 0, 0.8);
     border-radius: 15px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-    transform: perspective(1000px) rotateX(1deg);
-    animation: slideUp 1.5s ease-out;
-    transition: background-color 0.3s;
-}
-
-section:hover {
-    background: #00ffff;
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* List and Links */
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    margin: 10px 0;
-    font-size: 1.1rem;
-    transition: color 0.3s, transform 0.3s;
-}
-
-li:hover {
-    color: #ffdd00;
-    transform: scale(1.1);
-}
-
-a {
-    text-decoration: none;
-    color: #fff;
-    transition: color 0.3s;
-}
-
-a:hover {
-    color: #00ffff;
-}
-
-dl {
-    margin: 20px 0;
-    font-size: 1.1rem;
-}
-
-dt {
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-dd {
-    margin-left: 20px;
-}
-
-blockquote {
-    font-style: italic;
-    color: #ff6600;
-    margin: 20px 0;
-    text-align: center;
-    font-size: 1.2rem;
-}
-
-/* Footer */
-footer {
-    text-align: center;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
     padding: 20px;
-    font-size: 1rem;
-    background: rgba(0, 0, 0, 0.1);
 }
 
-footer a {
-    color: #ff6600;
+section table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    margin-top: 20px;
 }
 
-/* Hover Effects */
-header:hover, section:hover {
-    transform: perspective(1000px) rotateX(0deg) scale(1.02);
+section th, section td {
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+section th {
+    background-color: #6a1b9a;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+section td {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+/* Button Styling */
+.view-code {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #6a1b9a;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.view-code:hover {
+    background-color: #ff4081;
 }
 
 /* Responsive Design */
@@ -196,7 +86,16 @@ header:hover, section:hover {
         font-size: 2rem;
     }
 
-    p, li {
+    p {
         font-size: 1rem;
+    }
+
+    section th, section td {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    .view-code {
+        padding: 8px 15px;
     }
 }
