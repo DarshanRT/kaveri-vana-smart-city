@@ -1,1 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heap Sort Algorithm</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background: linear-gradient(to right, #89f7fe, #66a6ff);
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #003366;
+            animation: fadeIn 2s;
+            margin-bottom: 30px;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            display: block;
+            margin: 30px auto;
+            background-color: #003366;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #001f4d;
+            transform: scale(1.1);
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            body {
+                margin: 10px;
+            }
+
+            pre {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+                margin: 5px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            pre {
+                font-size: 12px;
+                padding: 8px;
+            }
+
+            button {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Heap Sort Algorithm</h1>
+
+<pre>
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+// Function to build the max-heap by heapifying downwards
+void heapify(vector&lt;int&gt;& H, int n, int i) {
+    int k = i;          // Current node
+    int v = H[k];       // Value at current node
+    bool heap = false;
+
+    while (!heap && 2 * k <= n) {  // While there is at least a left child
+        int j = 2 * k;             // Left child index
+        if (j &lt; n && H[j] &lt; H[j + 1])  // If right child exists and is greater
+            j++;
+        
+        if (v &gt;= H[j])             // If current value is greater than or equal to the largest child
+            heap = true;
+        else {
+            H[k] = H[j];           // Move the largest child up
+            k = j;                 // Move to the next level
+        }
+    }
+    H[k] = v;                      // Place the original value in the correct position
+}
+
+// Function to perform heap sort
+void heapSort(vector&lt;int&gt;& H) {
+    int n = H.size() - 1;          // Assuming the array is 1-indexed
+
+    // Step 1: Build a max heap
+    for (int i = n / 2; i &gt;= 1; i--) {
+        heapify(H, n, i);
+    }
+
+    // Step 2: Extract elements from the heap
+    for (int i = n; i &gt; 1; i--) {
+        swap(H[1], H[i]);          // Swap the root (largest) with the last element
+        heapify(H, i - 1, 1);      // Heapify the reduced heap
+    }
+}
+
+int main() {
+    // 1-indexed array (dummy element at index 0)
+    vector&lt;int&gt; H = {0, 4, 10, 3, 5, 1}; 
+
+    cout &lt;&lt; "Original array: ";
+    for (int i = 1; i &lt; H.size(); i++)
+        cout &lt;&lt; H[i] &lt;&lt; " ";
+    cout &lt;&lt; endl;
+
+    heapSort(H);
+
+    cout &lt;&lt; "Sorted array: ";
+    for (int i = 1; i &lt; H.size(); i++)
+        cout &lt;&lt; H[i] &lt;&lt; " ";
+    cout &lt;&lt; endl;
+
+    return 0;
+}
+</pre>
+
+</body>
+</html>
 
