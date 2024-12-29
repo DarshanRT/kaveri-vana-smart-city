@@ -1,64 +1,98 @@
-#include<bits/stdc++.h>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dijkstra's Algorithm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+            color: #000; /* Set general text color to black */
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF; /* Retain distinct heading color */
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+            font-family: "Courier New", Courier, monospace;
+            color: #000; /* Set code text color to black */
+        }
+        code {
+            color: #000; /* Set inline code text color to black */
+        }
+    </style>
+</head>
+<body>
+    <h1>Dijkstra's Algorithm Implementation</h1>
+    <pre>
+<code>
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;climits&gt;
 using namespace std;
 
-class Solution
-{
-	public:
-    vector <int> dijkstra(int V, vector<vector<int>> adj[], int S)
-    {
-            set<pair<int,int>> st; 
+void dijkstra(vector&lt;vector&lt;pair&lt;int, int&gt;&gt;&gt;&amp; graph, int source) {
+    int n = graph.size();
+    vector&lt;int&gt; dist(n, INT_MAX);
+    priority_queue&lt;pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt;, greater&lt;pair&lt;int, int&gt;&gt;&gt; pq;
 
-           vector<int> dist(V, 1e9); 
-        
-        st.insert({0, S}); 
+    dist[source] = 0;
+    pq.push({0, source});
 
-          dist[S] = 0;
-        
-              while(!st.empty()) {
-            auto it = *(st.begin()); 
-            int node = it.second; 
-            int dis = it.first; 
-            st.erase(it); 
-         
-            for(auto it : adj[node]) {
-                int adjNode = it[0]; 
-                int edgW = it[1]; 
-                
-                if(dis + edgW < dist[adjNode]) {
-                                   if(dist[adjNode] != 1e9) 
-                        st.erase({dist[adjNode], adjNode}); 
-                        
-                                   dist[adjNode] = dis + edgW; 
-                    st.insert({dist[adjNode], adjNode}); 
-                 }
+    while (!pq.empty()) {
+        int u = pq.top().second;
+        pq.pop();
+
+        for (auto&amp; edge : graph[u]) {
+            int v = edge.first;
+            int weight = edge.second;
+
+            if (dist[u] + weight &lt; dist[v]) {
+                dist[v] = dist[u] + weight;
+                pq.push({dist[v], v});
             }
         }
-             return dist; 
     }
-};
 
-int main()
-{
-
-    int V = 3, E = 3, S = 2;
-    vector<vector<int>> adj[V];
-    vector<vector<int>> edges;
-    vector<int> v1{1, 1}, v2{2, 6}, v3{2, 3}, v4{0, 1}, v5{1, 3}, v6{0, 6};
-    int i = 0;
-    adj[0].push_back(v1);
-    adj[0].push_back(v2);
-    adj[1].push_back(v3);
-    adj[1].push_back(v4);
-    adj[2].push_back(v5);
-    adj[2].push_back(v6);
-
-    Solution obj;
-    vector<int> res = obj.dijkstra(V, adj, S);
-
-    for (int i = 0; i < V; i++)
-    {
-        cout << res[i] << " ";
+    cout &lt;&lt; "Vertex\tDistance from Source\n";
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; i &lt;&lt; "\t" &lt;&lt; dist[i] &lt;&lt; "\n";
     }
-    cout << endl;
-    return 0;
 }
+
+int main() {
+    int n = 5;
+    vector&lt;vector&lt;pair&lt;int, int&gt;&gt;&gt; graph(n);
+
+    graph[0].push_back({1, 2});
+    graph[0].push_back({3, 1});
+    graph[1].push_back({2, 4});
+    graph[1].push_back({3, 3});
+    graph[3].push_back({4, 5});
+    graph[4].push_back({2, 1});
+
+    int source;
+    cout &lt;&lt; "Enter the source vertex (0 to " &lt;&lt; n - 1 &lt;&lt; "): ";
+    cin &gt;&gt; source;
+
+    if (source &lt; 0 || source &gt;= n) { // Check for valid source input
+        cout &lt;&lt; "Invalid source vertex.\n";
+        return 1;
+    }
+
+    dijkstra(graph, source);
+
+    return 0;
+}
+</code>
+    </pre>
+</body>
+</html>
