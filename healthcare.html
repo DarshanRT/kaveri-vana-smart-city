@@ -21,16 +21,12 @@
             border-radius: 5px;
             background: #fff;
         }
-        button {
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
+        a {
+            color: #007BFF;
+            text-decoration: none;
         }
-        button:hover {
-            background-color: #0056b3;
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -39,31 +35,39 @@
 <h1>Healthcare and Wellness</h1>
 
 <section>
-    <h2>i) Infectious Disease Spread Simulation</h2>
-    <p><strong>Algorithm:</strong> Breadth-First Search (BFS)</p>
-    <p><strong>Use Case:</strong> Simulate the spread of diseases and identify areas at risk.</p>
-    <button onclick="window.location.href='bfs_code.html'">View BFS Code</button>
+    <h2>i) <strong>Infectious Disease Spread Simulation</strong></h2>
+    <ul>
+        <li><strong>Algorithm:</strong> Breadth-First Search (BFS)</li>
+        <li><strong>Use Case:</strong> Model the transmission of diseases and determine high-risk areas.</li>
+        <li><strong>View Code:</strong> <a href="bfs_code.html">BFS Implementation</a></li>
+    </ul>
 </section>
 
 <section>
-    <h2>ii) Emergency Response Optimization</h2>
-    <p><strong>Algorithm:</strong> Shortest Path Algorithms (Dijkstra’s Algorithm)</p>
-    <p><strong>Use Case:</strong> Optimize ambulance routes to minimize response times.</p>
-    <button onclick="window.location.href='dijkstra_code.html'">View Dijkstra Code</button>
+    <h2>ii) <strong>Emergency Response Optimization</strong></h2>
+    <ul>
+        <li><strong>Algorithm:</strong> Shortest Path Algorithms (e.g., Dijkstra's Algorithm)</li>
+        <li><strong>Use Case:</strong> Enhance ambulance routing to ensure the quickest response times.</li>
+        <li><strong>View Code:</strong> <a href="dijkstra_code.html">Dijkstra’s Algorithm Implementation</a></li>
+    </ul>
 </section>
 
 <section>
-    <h2>iii) Patient Prioritization</h2>
-    <p><strong>Algorithm:</strong> Merge Sort</p>
-    <p><strong>Use Case:</strong> Rank patients by urgency based on health conditions.</p>
-    <button onclick="window.location.href='merge_sort_code.html'">View Merge Sort Code</button>
+    <h2>iii) <strong>Patient Prioritization</strong></h2>
+    <ul>
+        <li><strong>Algorithm:</strong> Merge Sort</li>
+        <li><strong>Use Case:</strong> Sort patients by the severity of their condition to determine treatment priority.</li>
+        <li><strong>View Code:</strong> <a href="merge_sort_code.html">Merge Sort Implementation</a></li>
+    </ul>
 </section>
 
 <section>
-    <h2>iv) Patient Dossier</h2>
-    <p><strong>Algorithm:</strong> Brute Force String Search</p>
-    <p><strong>Use Case:</strong> Efficiently search for patient records or diagnoses using keywords and finding health-related alerts or reports.</p>
-    <button onclick="window.location.href='brute_force_code.html'">View Brute Force String Search Code</button>
+    <h2>iv) <strong>Patient Records Search</strong></h2>
+    <ul>
+        <li><strong>Algorithm:</strong> Brute Force String Search</li>
+        <li><strong>Use Case:</strong> Quickly locate patient details or diagnostic information using specific keywords, including identifying health alerts or reports.</li>
+        <li><strong>View Code:</strong> <a href="brute_force_code.html">Brute Force String Search Implementation</a></li>
+    </ul>
 </section>
 
 </body>
