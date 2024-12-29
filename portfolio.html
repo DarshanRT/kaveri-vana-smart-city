@@ -156,6 +156,28 @@
             100% { transform: scale(1) translate(0, 0); }
         }
 
+        /* Portfolio Topic Section */
+        .portfolio-topic dl {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 10px 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-topic dt {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .portfolio-topic dd {
+            font-size: 1rem;
+            color: #555;
+        }
+
     </style>
 </head>
 <body>
@@ -198,28 +220,30 @@
         </ul>
 
         <h2>Portfolio Topic</h2>
-        <dl>
-            <dt>Course Name</dt>
-            <dd>ALGORITHMIC PROBLEM SOLVING</dd>
+        <div class="portfolio-topic">
+            <dl>
+                <dt>Course Name</dt>
+                <dd>ALGORITHMIC PROBLEM SOLVING</dd>
 
-            <dt>Course Code</dt>
-            <dd>CSE202</dd>
+                <dt>Course Code</dt>
+                <dd>CSE202</dd>
 
-            <dt>Name</dt>
-            <dd>Darshan Ramanjaneya Talawar</dd>
+                <dt>Name</dt>
+                <dd>Darshan Ramanjaneya Talawar</dd>
 
-            <dt>SRN</dt>
-            <dd>01FE23BCS303</dd>
+                <dt>SRN</dt>
+                <dd>01FE23BCS303</dd>
 
-            <dt>Course Instructor</dt>
-            <dd>Arundhati Aralimatti</dd>
+                <dt>Course Instructor</dt>
+                <dd>Arundhati Aralimatti</dd>
 
-            <dt>University</dt>
-            <dd>KLE Technological University</dd>
+                <dt>University</dt>
+                <dd>KLE Technological University</dd>
 
-            <dt>Portfolio Topic/Domain</dt>
-            <dd>Smart city design</dd>
-        </dl>
+                <dt>Portfolio Topic/Domain</dt>
+                <dd>Smart city design</dd>
+            </dl>
+        </div>
 
         <blockquote>
             “The only way to do great work is to love what you do.” – Steve Jobs
