@@ -14,18 +14,23 @@
         h1, h2 {
             color: #333;
         }
-        pre {
-            background: #eee;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
         section {
             margin-bottom: 20px;
             padding: 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
             background: #fff;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -37,113 +42,28 @@
     <h2>i) Infectious Disease Spread Simulation</h2>
     <p><strong>Algorithm:</strong> Breadth-First Search (BFS)</p>
     <p><strong>Use Case:</strong> Simulate the spread of diseases and identify areas at risk.</p>
-    <pre><code>// BFS Code
-function bfs(graph, start) {
-    let queue = [start];
-    let visited = new Set();
-
-    while (queue.length > 0) {
-        let node = queue.shift();
-
-        if (!visited.has(node)) {
-            console.log(node); // Process the node
-            visited.add(node);
-
-            for (let neighbor of graph[node]) {
-                if (!visited.has(neighbor)) {
-                    queue.push(neighbor);
-                }
-            }
-        }
-    }
-}
-</code></pre>
+    <button onclick="window.location.href='bfs_code.html'">View BFS Code</button>
 </section>
 
 <section>
     <h2>ii) Emergency Response Optimization</h2>
     <p><strong>Algorithm:</strong> Shortest Path Algorithms (Dijkstra’s Algorithm)</p>
     <p><strong>Use Case:</strong> Optimize ambulance routes to minimize response times.</p>
-    <pre><code>// Dijkstra Code
-function dijkstra(graph, start) {
-    let distances = {};
-    let visited = new Set();
-
-    for (let node in graph) {
-        distances[node] = Infinity;
-    }
-    distances[start] = 0;
-
-    while (visited.size !== Object.keys(graph).length) {
-        let currentNode = Object.keys(distances).reduce((minNode, node) => {
-            return visited.has(node) || distances[node] > distances[minNode] ? minNode : node;
-        }, null);
-
-        visited.add(currentNode);
-
-        for (let neighbor in graph[currentNode]) {
-            let newDist = distances[currentNode] + graph[currentNode][neighbor];
-            if (newDist < distances[neighbor]) {
-                distances[neighbor] = newDist;
-            }
-        }
-    }
-
-    return distances;
-}
-</code></pre>
+    <button onclick="window.location.href='dijkstra_code.html'">View Dijkstra Code</button>
 </section>
 
 <section>
     <h2>iii) Patient Prioritization</h2>
     <p><strong>Algorithm:</strong> Merge Sort</p>
     <p><strong>Use Case:</strong> Rank patients by urgency based on health conditions.</p>
-    <pre><code>// Merge Sort Code
-function mergeSort(array) {
-    if (array.length <= 1) return array;
-
-    let mid = Math.floor(array.length / 2);
-    let left = mergeSort(array.slice(0, mid));
-    let right = mergeSort(array.slice(mid));
-
-    return merge(left, right);
-}
-
-function merge(left, right) {
-    let result = [];
-    while (left.length && right.length) {
-        if (left[0] < right[0]) {
-            result.push(left.shift());
-        } else {
-            result.push(right.shift());
-        }
-    }
-    return result.concat(left, right);
-}
-</code></pre>
+    <button onclick="window.location.href='merge_sort_code.html'">View Merge Sort Code</button>
 </section>
 
 <section>
     <h2>iv) Patient Dossier</h2>
     <p><strong>Algorithm:</strong> Brute Force String Search</p>
     <p><strong>Use Case:</strong> Efficiently search for patient records or diagnoses using keywords and finding health-related alerts or reports.</p>
-    <pre><code>// Brute Force String Search Code
-function bruteForceSearch(text, pattern) {
-    for (let i = 0; i <= text.length - pattern.length; i++) {
-        let match = true;
-        for (let j = 0; j < pattern.length; j++) {
-            if (text[i + j] !== pattern[j]) {
-                match = false;
-                break;
-            }
-        }
-        if (match) {
-            return i; // Found match
-        }
-    }
-    return -1; // No match
-}
-</code></pre>
+    <button onclick="window.location.href='brute_force_code.html'">View Brute Force String Search Code</button>
 </section>
 
 </body>
