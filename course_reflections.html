@@ -13,45 +13,54 @@
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+            color: #333;
         }
 
         header {
-            background-color: #c8a2c8;
+            background: linear-gradient(90deg, #f4419a, #fc7a57);
             color: white;
             text-align: center;
             padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
             margin: 0;
             font-size: 2.5rem;
+            transition: color 0.3s ease;
+        }
+
+        h1:hover {
+            color: #ffd700;
         }
 
         p {
             font-size: 1.2rem;
+            line-height: 1.6;
         }
 
         section {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             padding: 20px;
         }
 
         .reflection {
-            background-color: #ffffff;
+            background: white;
             padding: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease-in-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .reflection:hover {
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         h2 {
-            color: #c8a2c8;
+            color: #f4419a;
             font-size: 1.8rem;
             margin-bottom: 1rem;
         }
@@ -62,36 +71,49 @@
         }
 
         ul li {
-            background-color: #f3e4f8;
+            background-color: #fbe9f2;
             padding: 0.75rem;
             margin-bottom: 0.5rem;
             border-radius: 5px;
             color: #333;
+            transition: background-color 0.3s ease;
+        }
+
+        ul li:hover {
+            background-color: #ffe6f0;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         table th, table td {
             padding: 1rem;
             border: 1px solid #eaeaea;
             text-align: left;
+            transition: background-color 0.3s ease;
         }
 
         table th {
-            background-color: #c8a2c8;
+            background-color: #f4419a;
             color: white;
         }
 
+        table tr:hover td {
+            background-color: #fbe9f2;
+        }
+
         a {
-            color: #c8a2c8;
+            color: #f4419a;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
 
         a:hover {
+            color: #fc7a57;
             text-decoration: underline;
         }
 
@@ -255,6 +277,5 @@
             </ul>
         </div>
     </section>
-
 </body>
 </html>
