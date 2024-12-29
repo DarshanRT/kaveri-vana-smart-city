@@ -1,4 +1,38 @@
-#include <iostream>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BFS Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+            font-family: "Courier New", Courier, monospace;
+        }
+        code {
+            color: #d63384;
+        }
+    </style>
+</head>
+<body>
+    <h1>BFS Code Implementation</h1>
+    <pre>
+<code>
+#include &lt;iostream&gt;
 using namespace std;
 
 void bfs(int m[10][10], int v, int source) {
@@ -9,14 +43,14 @@ void bfs(int m[10][10], int v, int source) {
     queue[rear] = source;
     visited[source] = 1;
 
-    cout << "The BFS Traversal is:\n";
+    cout &lt;&lt; "The BFS Traversal is:\n";
 
     while (front <= rear) {
         u = queue[front];
-        cout << u << "\t";
+        cout &lt;&lt; u &lt;&lt; "\t";
         front++;
 
-        for (i = 0; i < v; i++) {
+        for (i = 0; i &lt; v; i++) {
             if (m[u][i] == 1 && visited[i] == 0) { // Check for unvisited adjacent nodes
                 visited[i] = 1;
                 rear++;
@@ -35,11 +69,11 @@ int main() {
                      {0, 1, 1, 0, 0}};
 
     int source;
-    cout << "Enter the source vertex (0 to " << v - 1 << "): ";
-    cin >> source;
+    cout &lt;&lt; "Enter the source vertex (0 to " &lt;&lt; v - 1 &lt;&lt; "): ";
+    cin &gt;&gt; source;
 
-    if (source < 0 || source >= v) {  // Check for valid source input
-        cout << "Invalid source vertex.\n";
+    if (source &lt; 0 || source &gt;= v) {  // Check for valid source input
+        cout &lt;&lt; "Invalid source vertex.\n";
         return 1;
     }
 
@@ -47,3 +81,7 @@ int main() {
 
     return 0;
 }
+</code>
+    </pre>
+</body>
+</html>
