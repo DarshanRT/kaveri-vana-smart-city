@@ -7,55 +7,159 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        /* General Body Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #ff6b6b, #f0f0f0);
+            color: #333;
+            transition: background 0.5s ease-in-out;
+        }
+
         /* Flexbox Layout */
         .profile-section {
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            animation: fadeIn 2s ease-in-out;
         }
 
         .profile-picture {
-            width: 100px; /* Smaller size */
-            height: 100px; /* Smaller size */
-            border-radius: 50%; /* Fully round shape */
-            margin-right: 20px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-right: 30px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s ease;
+        }
+
+        .profile-picture:hover {
+            transform: scale(1.1);
         }
 
         .intro {
             text-align: center;
+            color: #333;
         }
 
-        /* Additional Styling */
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
+        .intro h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         }
 
-        header {
+        .intro p {
+            color: #f0f0f0;
+            font-size: 1.2rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 40px;
             background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            margin: 20px auto;
+            width: 80%;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            animation: slideUp 1.5s ease-in-out;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+
+        ul, dl {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        li:hover {
+            color: #ff6b6b;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ff6b6b;
         }
 
         footer {
             text-align: center;
-            padding: 10px;
+            padding: 20px;
             background-color: #222;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        footer a {
+            color: #ff6b6b;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        footer a:hover {
             color: #fff;
         }
 
-        section {
-            padding: 20px;
+        /* Animation Effects */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
+
+        @keyframes slideUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* DAA Animation - 3D Effect */
+        .daa-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .daa-node {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #ff6b6b;
+            border-radius: 50%;
+            animation: moveNode 5s ease-in-out infinite;
+        }
+
+        @keyframes moveNode {
+            0% { transform: scale(1) translate(0, 0); }
+            50% { transform: scale(1.5) translate(50px, 50px); }
+            100% { transform: scale(1) translate(0, 0); }
+        }
+
     </style>
 </head>
 <body>
-    <div class="aurora"></div>
     <div class="daa-animation">
-        <!-- Nodes for DAA Animation -->
         <div class="daa-node" style="top: 10%; left: 20%;"></div>
         <div class="daa-node" style="top: 30%; left: 50%;"></div>
         <div class="daa-node" style="top: 70%; left: 80%;"></div>
@@ -72,7 +176,7 @@
             </div>
         </div>
     </header>
-    <br>
+    
     <section>
         <h2>🛠️ Projects</h2>
         <ul>
