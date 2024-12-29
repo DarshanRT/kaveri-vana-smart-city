@@ -3,37 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BFS Code</title>
+    <title>BFS Algorithm Code</title>
     <style>
+        /* General Styling */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            padding: 20px;
-            color: #000; /* Set general text color to black */
+            line-height: 1.6;
+            margin: 20px;
+            background: linear-gradient(to right, #89f7fe, #66a6ff);
+            color: #333;
         }
+
         h1 {
             text-align: center;
-            color: #007BFF; /* Retain distinct heading color */
+            color: #003366;
+            animation: fadeIn 2s;
+            margin-bottom: 30px;
         }
+
         pre {
             background-color: #f4f4f4;
-            padding: 20px;
-            border-radius: 5px;
             border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
             overflow-x: auto;
-            font-family: "Courier New", Courier, monospace;
-            color: #000; /* Set code text color to black */
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        code {
-            color: #000; /* Set inline code text color to black */
+
+        button {
+            display: block;
+            margin: 30px auto;
+            background-color: #003366;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #001f4d;
+            transform: scale(1.1);
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            body {
+                margin: 10px;
+            }
+
+            pre {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+                margin: 5px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            pre {
+                font-size: 12px;
+                padding: 8px;
+            }
+
+            button {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>BFS Code Implementation</h1>
-    <pre>
-<code>
-#include &lt;iostream&gt;
+
+<h1>BFS Algorithm Code</h1>
+
+<pre>
+#include <iostream>
 using namespace std;
 
 void bfs(int m[10][10], int v, int source) {
@@ -44,14 +104,14 @@ void bfs(int m[10][10], int v, int source) {
     queue[rear] = source;
     visited[source] = 1;
 
-    cout &lt;&lt; "The BFS Traversal is:\n";
+    cout << "The BFS Traversal is:\n";
 
     while (front <= rear) {
         u = queue[front];
-        cout &lt;&lt; u &lt;&lt; "\t";
+        cout << u << "\t";
         front++;
 
-        for (i = 0; i &lt; v; i++) {
+        for (i = 0; i < v; i++) {
             if (m[u][i] == 1 && visited[i] == 0) { // Check for unvisited adjacent nodes
                 visited[i] = 1;
                 rear++;
@@ -70,11 +130,11 @@ int main() {
                      {0, 1, 1, 0, 0}};
 
     int source;
-    cout &lt;&lt; "Enter the source vertex (0 to " &lt;&lt; v - 1 &lt;&lt; "): ";
-    cin &gt;&gt; source;
+    cout << "Enter the source vertex (0 to " << v - 1 << "): ";
+    cin >> source;
 
-    if (source &lt; 0 || source &gt;= v) {  // Check for valid source input
-        cout &lt;&lt; "Invalid source vertex.\n";
+    if (source < 0 || source >= v) {  // Check for valid source input
+        cout << "Invalid source vertex.\n";
         return 1;
     }
 
@@ -82,7 +142,7 @@ int main() {
 
     return 0;
 }
-</code>
-    </pre>
+</pre>
+
 </body>
 </html>
