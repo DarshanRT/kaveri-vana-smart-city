@@ -9,40 +9,64 @@
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 20px;
-            background-color: #f9f9f9;
+            background-color: #f0f8ff;
         }
         h1 {
             color: #333;
             text-align: center;
+            animation: fadeIn 2s;
         }
         h2 {
-            color: #333;
+            color: #007BFF;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        h2:hover {
+            color: #ff4500;
+            transform: scale(1.1);
         }
         section {
             margin-bottom: 20px;
             padding: 15px;
             border: 1px solid #ddd;
-            border-radius: 5px;
-            background: #fff;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #ffffff, #e0e0e0);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
         button {
             background-color: #007BFF;
             color: white;
             border: none;
             padding: 10px 15px;
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
         button:hover {
             background-color: #0056b3;
             transform: scale(1.1);
         }
         ul li {
+            margin: 10px 0;
+        }
+        ul li strong {
             transition: color 0.3s ease;
         }
-        ul li:hover {
-            color: #007BFF;
+        ul li strong:hover {
+            color: #ff4500;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -55,7 +79,7 @@
     <ul>
         <li><strong>Algorithm:</strong> Breadth-First Search (BFS)</li>
         <li><strong>Use Case:</strong> Model the transmission of diseases and determine high-risk areas.</li>
-        <li><strong></strong> <button onclick="window.location.href='bfs_code.html'">BFS Implementation</button></li>
+        <li><button onclick="window.location.href='bfs_code.html'">BFS Implementation</button></li>
     </ul>
 </section>
 
@@ -64,7 +88,7 @@
     <ul>
         <li><strong>Algorithm:</strong> Shortest Path Algorithms (e.g., Dijkstra's Algorithm)</li>
         <li><strong>Use Case:</strong> Enhance ambulance routing to ensure the quickest response times.</li>
-        <li><strong></strong> <button onclick="window.location.href='dijkstra_code.html'">Dijkstra’s Algorithm Implementation</button></li>
+        <li><button onclick="window.location.href='dijkstra_code.html'">Dijkstra’s Algorithm Implementation</button></li>
     </ul>
 </section>
 
@@ -73,7 +97,7 @@
     <ul>
         <li><strong>Algorithm:</strong> Merge Sort</li>
         <li><strong>Use Case:</strong> Sort patients by the severity of their condition to determine treatment priority.</li>
-        <li><strong></strong> <button onclick="window.location.href='merge_sort_code.html'">Merge Sort Implementation</button></li>
+        <li><button onclick="window.location.href='merge_sort_code.html'">Merge Sort Implementation</button></li>
     </ul>
 </section>
 
@@ -82,45 +106,7 @@
     <ul>
         <li><strong>Algorithm:</strong> Brute Force String Search</li>
         <li><strong>Use Case:</strong> Quickly locate patient details or diagnostic information using specific keywords, including identifying health alerts or reports.</li>
-        <li><strong></strong> <button onclick="window.location.href='brute_force_code.html'">Brute Force String Search Implementation</button></li>
-    </ul>
-</section>
-
-<h1>Protection and Safety</h1>
-
-<section>
-    <h2>i) <strong>Disaster Risk Assessment</strong></h2>
-    <ul>
-        <li><strong>Algorithm:</strong> Flood Fill Algorithm (BFS)</li>
-        <li><strong>Use Case:</strong> Pinpoint areas at risk during disasters such as floods or earthquakes and plan efficient evacuation routes.</li>
-        <li><strong></strong> <button onclick="window.location.href='bfs_code.html'">BFS Implementation</button></li>
-    </ul>
-</section>
-
-<section>
-    <h2>ii) <strong>Controlled Access Monitoring</strong></h2>
-    <ul>
-        <li><strong>Algorithm:</strong> Graph Traversal (BFS)</li>
-        <li><strong>Use Case:</strong> Regulate and oversee entry into secured zones, such as government facilities or power plants.</li>
-        <li><strong></strong> <button onclick="window.location.href='bfs_code.html'">BFS Implementation</button></li>
-    </ul>
-</section>
-
-<section>
-    <h2>iii) <strong>Emergency Call Prioritization</strong></h2>
-    <ul>
-        <li><strong>Algorithm:</strong> Heap Sort</li>
-        <li><strong>Use Case:</strong> Arrange emergency calls in order of urgency, such as medical crises, fires, or security threats.</li>
-        <li><strong></strong> <button onclick="window.location.href='heap_sort_code.html'">Heap Sort Implementation</button></li>
-    </ul>
-</section>
-
-<section>
-    <h2>iv) <strong>Security Resource Distribution</strong></h2>
-    <ul>
-        <li><strong>Algorithm:</strong> Heap Sort</li>
-        <li><strong>Use Case:</strong> Prioritize and allocate security measures for different areas based on risk, such as surveillance or patrol needs.</li>
-        <li><strong></strong> <button onclick="window.location.href='heap_sort_code.html'">Heap Sort Implementation</button></li>
+        <li><button onclick="window.location.href='brute_force_code.html'">Brute Force String Search Implementation</button></li>
     </ul>
 </section>
 
