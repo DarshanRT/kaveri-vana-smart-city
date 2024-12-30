@@ -7,14 +7,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* General Body Styling */
+        /* General Body Styling with Dynamic Gradient Animation */
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(45deg, #ff6b6b, #f0f0f0);
+            background: linear-gradient(45deg, blue, pink, violet, red, white);
+            background-size: 400% 400%;
             color: #333;
-            transition: background 0.5s ease-in-out;
+            animation: gradientAnimation 10s ease infinite;
+        }
+
+        /* Keyframes for Gradient Animation */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* Flexbox Layout */
