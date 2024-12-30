@@ -23,6 +23,12 @@
             margin-top: 40px;
             margin-bottom: 20px;
         }
+        .logo {
+            display: block;
+            margin: 0 auto;
+            width: 60px;
+            height: auto;
+        }
         table {
             width: 100%;
             margin-bottom: 20px;
@@ -65,17 +71,12 @@
                 opacity: 1;
             }
         }
-        .logo {
-            width: 20px;
-            height: 20px;
-            margin-right: 5px;
-            vertical-align: middle;
-        }
     </style>
 </head>
 <body>
 
 <div class="section-title">Healthcare and Wellness</div>
+<img src="https://via.placeholder.com/60" alt="Healthcare Logo" class="logo">
 <table>
     <thead>
         <tr>
@@ -88,10 +89,7 @@
     </thead>
     <tbody>
         <tr>
-            <td>
-                <img src="infectious_disease_logo.png" alt="Infectious Disease Logo" class="logo">
-                <strong>i) Infectious Disease Spread Simulation</strong>
-            </td>
+            <td><strong>i) Infectious Disease Spread Simulation</strong></td>
             <td>Breadth-First Search (BFS)</td>
             <td>Model the transmission of diseases and determine high-risk areas.</td>
             <td>
@@ -103,10 +101,7 @@
             <td><button onclick="window.location.href='bfs_code.html'">BFS Implementation</button></td>
         </tr>
         <tr>
-            <td>
-                <img src="emergency_response_logo.png" alt="Emergency Response Logo" class="logo">
-                <strong>ii) Emergency Response Optimization</strong>
-            </td>
+            <td><strong>ii) Emergency Response Optimization</strong></td>
             <td>Shortest Path Algorithms (e.g., Dijkstra's Algorithm)</td>
             <td>Enhance ambulance routing to ensure the quickest response times.</td>
             <td>
@@ -118,10 +113,7 @@
             <td><button onclick="window.location.href='dijkstra_code.html'">Dijkstra’s Algorithm Implementation</button></td>
         </tr>
         <tr>
-            <td>
-                <img src="patient_prioritization_logo.png" alt="Patient Prioritization Logo" class="logo">
-                <strong>iii) Patient Prioritization</strong>
-            </td>
+            <td><strong>iii) Patient Prioritization</strong></td>
             <td>Merge Sort</td>
             <td>Sort patients by the severity of their condition to determine treatment priority.</td>
             <td>
@@ -133,10 +125,7 @@
             <td><button onclick="window.location.href='merge_sort_code.html'">Merge Sort Implementation</button></td>
         </tr>
         <tr>
-            <td>
-                <img src="patient_records_logo.png" alt="Patient Records Logo" class="logo">
-                <strong>iv) Patient Records Search</strong>
-            </td>
+            <td><strong>iv) Patient Records Search</strong></td>
             <td>Brute Force String Search</td>
             <td>Quickly locate patient details or diagnostic information using specific keywords, including identifying health alerts or reports.</td>
             <td>
@@ -151,78 +140,9 @@
 </table>
 
 <div class="section-title">Waste Management</div>
+<img src="https://via.placeholder.com/60" alt="Waste Management Logo" class="logo">
 <table>
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Algorithm</th>
-            <th>Use Case</th>
-            <th>Related SDGs</th>
-            <th>View Code</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <img src="waste_collection_logo.png" alt="Waste Collection Logo" class="logo">
-                <strong>i) Efficient Waste Collection and Distribution</strong>
-            </td>
-            <td>Breadth-First Search (BFS)</td>
-            <td>Map urban areas to identify optimal waste collection points and ensure efficient routes for waste collection trucks.</td>
-            <td>
-                <ul>
-                    <li><strong>SDG 11:</strong> Sustainable Cities and Communities – Promotes effective waste management in urban areas.</li>
-                    <li><strong>SDG 12:</strong> Responsible Consumption and Production – Encourages sustainable waste handling and reduction practices.</li>
-                </ul>
-            </td>
-            <td><button onclick="window.location.href='bfs_code.html'">BFS Implementation</button></td>
-        </tr>
-        <tr>
-            <td>
-                <img src="recycling_logo.png" alt="Recycling Logo" class="logo">
-                <strong>ii) Recycling Facility Optimization</strong>
-            </td>
-            <td>Dijkstra’s Algorithm</td>
-            <td>Optimize transportation of recyclable materials to the nearest processing facilities to reduce costs and energy consumption.</td>
-            <td>
-                <ul>
-                    <li><strong>SDG 12:</strong> Responsible Consumption and Production – Supports the creation of a circular economy.</li>
-                    <li><strong>SDG 13:</strong> Climate Action – Reduces carbon footprint by minimizing transportation inefficiencies.</li>
-                </ul>
-            </td>
-            <td><button onclick="window.location.href='dijkstra_code.html'">Dijkstra’s Algorithm Implementation</button></td>
-        </tr>
-        <tr>
-            <td>
-                <img src="hazardous_waste_logo.png" alt="Hazardous Waste Logo" class="logo">
-                <strong>iii) Hazardous Waste Prioritization</strong>
-            </td>
-            <td>Heap Sort</td>
-            <td>Rank and prioritize hazardous waste based on risk levels for proper and timely disposal.</td>
-            <td>
-                <ul>
-                    <li><strong>SDG 3:</strong> Good Health and Well-Being – Minimizes health risks from hazardous waste.</li>
-                    <li><strong>SDG 15:</strong> Life on Land – Ensures safe disposal to protect ecosystems and biodiversity.</li>
-                </ul>
-            </td>
-            <td><button onclick="window.location.href='https://DarshanRT.github.io/kaveri-vana-smart-city/codes/heap_sort_code.html'">Heap Sort Implementation</button></td>
-        </tr>
-        <tr>
-            <td>
-                <img src="waste_tracking_logo.png" alt="Waste Tracking Logo" class="logo">
-                <strong>iv) Waste Tracking and Monitoring</strong>
-            </td>
-            <td>HashMaps</td>
-            <td>Search and monitor waste generation patterns by analyzing records for trends, anomalies, or inefficiencies.</td>
-            <td>
-                <ul>
-                    <li><strong>SDG 16:</strong> Peace, Justice, and Strong Institutions – Encourages transparency and accountability in waste management systems.</li>
-                    <li><strong>SDG 9:</strong> Industry, Innovation, and Infrastructure – Promotes smart technologies for efficient waste tracking.</li>
-                </ul>
-            </td>
-            <td><button onclick="window.location.href='https://DarshanRT.github.io/kaveri-vana-smart-city/codes/hashmaps_code.html'">HashMaps Implementation</button></td>
-        </tr>
-    </tbody>
+    <!-- Table for Waste Management content -->
 </table>
 
 </body>
