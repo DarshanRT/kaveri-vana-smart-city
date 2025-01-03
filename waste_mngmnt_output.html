@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Management Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 20px 0;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Waste Management System</h1>
+    
+    <button id="runCodeButton">RUN CODE</button>
+    
+    <h2>Output:</h2>
+    <pre id="outputArea">
+        Menu:
+        1. Efficient Waste Collection and Distribution (BFS)
+        2. Recycling Facility Optimization (Dijkstra's Algorithm)
+        3. Hazardous Waste Prioritization (Heap Sort)
+        4. Waste Tracking and Monitoring (Merge Sort)
+        5. Exit
+        Enter your choice: 1
+        Enter the starting area for waste collection: Vijayanagar
+        Optimal Waste Collection Order starting from Vijayanagar:
+        Vijayanagar -> Jayalakshmipuram -> Nazarbad -> Gokulam -> Kuvempunagar -> Shivaji Nagar -> Mysore Palace -> Saraswathipuram -> Mandi -> Chamundi Hill -> Jayanagar -> Dhanvantri Nagar -> Chamaraja MoHalla -> Vontikoppal -> Aishwarya Lake -> END
+
+        Menu:
+        1. Efficient Waste Collection and Distribution (BFS)
+        2. Recycling Facility Optimization (Dijkstra's Algorithm)
+        3. Hazardous Waste Prioritization (Heap Sort)
+        4. Waste Tracking and Monitoring (Merge Sort)
+        5. Exit
+        Enter your choice: 2
+        Enter the starting area for recyclable materials transportation: Mandi
+        Optimal path for recyclable materials transportation:
+        Mandi -> Shivaji Nagar -> Nazarbad -> Vijayanagar -> Gokulam -> Facility -> END
+
+        Menu:
+        1. Efficient Waste Collection and Distribution (BFS)
+        2. Recycling Facility Optimization (Dijkstra's Algorithm)
+        3. Hazardous Waste Prioritization (Heap Sort)
+        4. Waste Tracking and Monitoring (Merge Sort)
+        5. Exit
+        Enter your choice: 3
+        Enter priority for each waste item (higher number means more hazardous):
+        Enter priority for Chemical X: 4
+        Enter priority for Biological Waste: 8
+        Enter priority for Flammable Waste: 6
+        Enter priority for Heavy Metals: 2
+        Enter priority for Plastic Waste: 1
+        Enter priority for E-Waste: 10
+        Enter priority for Radioactive Material: 4
+
+        Before prioritization:
+        Chemical X with priority 4
+        Biological Waste with priority 8
+        Flammable Waste with priority 6
+        Heavy Metals with priority 2
+        Plastic Waste with priority 1
+        E-Waste with priority 10
+        Radioactive Material with priority 4
+
+        After prioritization (most hazardous first):
+        Plastic Waste with priority 1
+        Heavy Metals with priority 2
+        Chemical X with priority 4
+        Radioactive Material with priority 4
+        Flammable Waste with priority 6
+        Biological Waste with priority 8
+        E-Waste with priority 10
+
+        Menu:
+        1. Efficient Waste Collection and Distribution (BFS)
+        2. Recycling Facility Optimization (Dijkstra's Algorithm)
+        3. Hazardous Waste Prioritization (Heap Sort)
+        4. Waste Tracking and Monitoring (Merge Sort)
+        5. Exit
+        Enter your choice: 4
+        Before waste tracking:
+        Ravi Kumar with severity 9
+        Sneha Patel with severity 6
+        Abhay Singh with severity 8
+        Priya Sharma with severity 5
+        Amit Verma with severity 10
+        Anjali Joshi with severity 7
+        Deepak Mehta with severity 3
+        Sakshi Gupta with severity 4
+
+        After waste tracking:
+        Amit Verma with severity 10
+        Ravi Kumar with severity 9
+        Abhay Singh with severity 8
+        Anjali Joshi with severity 7
+        Sneha Patel with severity 6
+        Priya Sharma with severity 5
+        Sakshi Gupta with severity 4
+        Deepak Mehta with severity 3
+    </pre>
+
+    <script>
+        document.getElementById("runCodeButton").addEventListener("click", function() {
+            alert("The code execution will take place here.");
+            // In a real-world scenario, you would trigger the backend execution here.
+        });
+    </script>
+</body>
+</html>
