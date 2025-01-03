@@ -3,110 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Healthcare Simulation Results</title>
+    <title>C++ Code Display</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        pre {
+            background-color: #282c34;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-x: auto;
         }
         h1 {
             text-align: center;
-        }
-        .menu {
             margin-bottom: 20px;
         }
-        .menu button {
-            margin: 10px;
-            padding: 10px;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-        }
-        .results {
-            margin-top: 30px;
-        }
-        .results h2 {
-            margin-bottom: 10px;
-        }
-        .result-item {
-            margin-bottom: 15px;
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>C++ Code Example</h1>
+        <pre>
+#include &lt;iostream&gt;
+#include &lt;unordered_map&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;set&gt;
+#include &lt;climits&gt;
+#include &lt;string&gt;
+using namespace std;
 
-    <h1>Healthcare Simulation Results</h1>
+// Function to create the graph based on Mysuru neighborhoods and nearby areas
+unordered_map&lt;string, vector&lt;string&gt;&gt; createMysuruGraph() {
+    unordered_map&lt;string, vector&lt;string&gt;&gt; graph;
+    graph[&quot;Chamundi Hill&quot;] = {&quot;Hebbal&quot;, &quot;Nanjangud&quot;};
+    graph[&quot;Hebbal&quot;] = {&quot;Chamundi Hill&quot;, &quot;Saraswathipuram&quot;, &quot;Vijayanagar&quot;};
+    graph[&quot;Saraswathipuram&quot;] = {&quot;Hebbal&quot;, &quot;Bannimantap&quot;};
+    graph[&quot;Vijayanagar&quot;] = {&quot;Hebbal&quot;, &quot;Lakshmipuram&quot;};
+    graph[&quot;Bannimantap&quot;] = {&quot;Saraswathipuram&quot;, &quot;Kesare&quot;};
+    graph[&quot;Kesare&quot;] = {&quot;Bannimantap&quot;, &quot;Nanjangud&quot;};
+    graph[&quot;Lakshmipuram&quot;] = {&quot;Vijayanagar&quot;, &quot;Chamundi Hill&quot;};
+    graph[&quot;Nanjangud&quot;] = {&quot;Chamundi Hill&quot;, &quot;Kesare&quot;};
+    return graph;
+}
 
-    <div class="menu">
-        <button onclick="showDiseaseSpread()">Disease Spread Simulation (BFS)</button>
-        <button onclick="showShortestPath()">Shortest Path Calculation (Dijkstra's)</button>
-        <button onclick="showSortingPatients()">Sorting Patients by Severity (Merge Sort)</button>
-        <button onclick="showSearchResults()">Brute-force String Search</button>
+// BFS function to simulate disease spread
+vector&lt;string&gt; bfsDiseaseSpread(unordered_map&lt;string, vector&lt;string&gt;&gt; &amp;graph, const string &amp;startNode) {
+    set&lt;string&gt; visited;
+    queue&lt;string&gt; q;
+    vector&lt;string&gt; spreadSequence;
+    q.push(startNode);
+    visited.insert(startNode);
+    while (!q.empty()) {
+        string current = q.front();
+        q.pop();
+        spreadSequence.push_back(current);
+        for (const string &amp;neighbor : graph[current]) {
+            if (visited.find(neighbor) == visited.end()) {
+                visited.insert(neighbor);
+                q.push(neighbor);
+            }
+        }
+    }
+    return spreadSequence;
+}
+
+// Dijkstra's Algorithm
+unordered_map&lt;string, int&gt; dijkstra(unordered_map&lt;string, unordered_map&lt;string, int&gt;&gt; &amp;graph, const string &amp;startNode) {
+    unordered_map&lt;string, int&gt; dist;
+    unordered_map&lt;string, bool&gt; visited;
+    for (auto &amp;node : graph) {
+        dist[node.first] = INT_MAX;
+        visited[node.first] = false;
+    }
+    dist[startNode] = 0;
+    priority_queue&lt;pair&lt;int, string&gt;, vector&lt;pair&lt;int, string&gt;&gt;, greater&lt;pair&lt;int, string&gt;&gt;&gt; pq;
+    pq.push({0, startNode});
+    while (!pq.empty()) {
+        string currentNode = pq.top().second;
+        int currentDist = pq.top().first;
+        pq.pop();
+        if (visited[currentNode]) continue;
+        visited[currentNode] = true;
+        for (auto &amp;neighbor : graph[currentNode]) {
+            string nextNode = neighbor.first;
+            int weight = neighbor.second;
+            if (currentDist + weight &lt; dist[nextNode]) {
+                dist[nextNode] = currentDist + weight;
+                pq.push({dist[nextNode], nextNode});
+            }
+        }
+    }
+    return dist;
+}
+
+// Merge Sort to sort patients by severity
+struct Patient {
+    string name;
+    int severity;
+};
+
+void merge(vector&lt;Patient&gt; &amp;patients, int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+    vector&lt;Patient&gt; leftHalf(n1), rightHalf(n2);
+    for (int i = 0; i &lt; n1; ++i) leftHalf[i] = patients[left + i];
+    for (int i = 0; i &lt; n2; ++i) rightHalf[i] = patients[mid + 1 + i];
+    int i = 0, j = 0, k = left;
+    while (i &lt; n1 &amp;&amp; j &lt; n2) {
+        if (leftHalf[i].severity &gt;= rightHalf[j].severity) {
+            patients[k] = leftHalf[i];
+            i++;
+        } else {
+            patients[k] = rightHalf[j];
+            j++;
+        }
+        k++;
+    }
+    while (i &lt; n1) {
+        patients[k] = leftHalf[i];
+        i++;
+        k++;
+    }
+    while (j &lt; n2) {
+        patients[k] = rightHalf[j];
+        j++;
+        k++;
+    }
+}
+
+void mergeSort(vector&lt;Patient&gt; &amp;patients, int left, int right) {
+    if (left &lt; right) {
+        int mid = left + (right - left) / 2;
+        mergeSort(patients, left, mid);
+        mergeSort(patients, mid + 1, right);
+        merge(patients, left, mid, right);
+    }
+}
+
+// Brute Force String Search
+bool bruteForceSearch(const string &amp;text, const string &amp;pattern) {
+    int n = text.size();
+    int m = pattern.size();
+    for (int i = 0; i &lt;= n - m; ++i) {
+        int j;
+        for (j = 0; j &lt; m; ++j) {
+            if (text[i + j] != pattern[j]) {
+                break;
+            }
+        }
+        if (j == m) return true;
+    }
+    return false;
+}
+
+void diseaseSpreadSimulation() {
+    unordered_map&lt;string, vector&lt;string&gt;&gt; mysuruGraph = createMysuruGraph();
+    string startNeighborhood;
+    cout &lt;&lt; &quot;Enter the starting neighborhood in Mysuru: &quot;;
+    cin &gt;&gt; startNeighborhood;
+    if (mysuruGraph.find(startNeighborhood) == mysuruGraph.end()) {
+        cout &lt;&lt; &quot;Starting neighborhood not found.&quot; &lt;&lt; endl;
+        return;
+    }
+    vector&lt;string&gt; spreadOrder = bfsDiseaseSpread(mysuruGraph, startNeighborhood);
+    cout &lt;&lt; &quot;Disease Spread Order from &quot; &lt;&lt; startNeighborhood &lt;&lt; &quot;:&quot; &lt;&lt; endl;
+    for (const string &amp;location : spreadOrder) {
+        cout &lt;&lt; location &lt;&lt; &quot; &quot;;
+    }
+    cout &lt;&lt; endl;
+}
+
+void shortestPathCalculation() {
+    unordered_map&lt;string, unordered_map&lt;string, int&gt;&gt; mysoreGraph = {
+        {&quot;Vijayanagar&quot;, { {&quot;Apollo BGS Hospital&quot;, 4}, {&quot;Narayana Multispeciality Hospital&quot;, 6} }},
+        {&quot;Chamundi Hill&quot;, { {&quot;Apollo BGS Hospital&quot;, 8}, {&quot;JSS Hospital&quot;, 10} }},
+        {&quot;Hebbal&quot;, { {&quot;Narayana Multispeciality Hospital&quot;, 3}, {&quot;Apollo BGS Hospital&quot;, 7} }},
+        {&quot;Nanjangud&quot;, { {&quot;JSS Hospital&quot;, 14}, {&quot;Columbia Asia Hospital&quot;, 12} }},
+        {&quot;Kesare&quot;, { {&quot;JSS Hospital&quot;, 5}, {&quot;Columbia Asia Hospital&quot;, 7} }}
+    };
+
+    string startLocation;
+    cout &lt;&lt; &quot;Enter the name of your area: &quot;;
+    cin &gt;&gt; startLocation;
+
+    unordered_map&lt;string, int&gt; shortestPaths = dijkstra(mysoreGraph, startLocation);
+
+    string nearestHospital = &quot;&quot;;
+    int minDistance = INT_MAX;
+
+    for (const auto &amp;node : shortestPaths) {
+        if (node.first.find(&quot;Hospital&quot;) != string::npos &amp;&amp; node.second &lt; minDistance) {
+            nearestHospital = node.first;
+            minDistance = node.second;
+        }
+    }
+
+    if (!nearestHospital.empty()) {
+        cout &lt;&lt; &quot;The nearest hospital to &quot; &lt;&lt; startLocation &lt;&lt; &quot; is &quot; &lt;&lt; nearestHospital
+             &lt;&lt; &quot; at a distance of &quot; &lt;&lt; minDistance &lt;&lt; &quot; km.&quot; &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; &quot;No hospital found nearby.&quot; &lt;&lt; endl;
+    }
+}
+
+void patientSortingBySeverity() {
+    vector&lt;Patient&gt; patients = {
+        {&quot;Ravi Kumar&quot;, 9}, {&quot;Sneha Patel&quot;, 6}, {&quot;Abhay Singh&quot;, 8},
+        {&quot;Priya Sharma&quot;, 5}, {&quot;Amit Verma&quot;, 10}, {&quot;Anjali Joshi&quot;, 7},
+        {&quot;Deepak Mehta&quot;, 3}, {&quot;Sakshi Gupta&quot;, 4}
+    };
+    mergeSort(patients, 0, patients.size() - 1);
+    cout &lt;&lt; &quot;\nPatients after sorting by severity (higher severity first):&quot; &lt;&lt; endl;
+    for (const auto &amp;p : patients) {
+        cout &lt;&lt; p.name &lt;&lt; &quot; - Severity: &quot; &lt;&lt; p.severity &lt;&lt; &quot;\n&quot;;
+    }
+}
+
+void bruteForceStringSearch() {
+    // Define patient records
+    vector&lt;pair&lt;string, string&gt;&gt; patientRecords = {
+        {&quot;Ravi Kumar&quot;, &quot;Diabetes, Hypertension&quot;},
+        {&quot;Sneha Patel&quot;, &quot;Asthma, Allergies&quot;},
+        {&quot;Abhay Singh&quot;, &quot;Fracture, Surgery&quot;},
+        {&quot;Priya Sharma&quot;, &quot;Migraine, Anxiety&quot;},
+        {&quot;Amit Verma&quot;, &quot;Heart Disease, Hypertension&quot;},
+        {&quot;Anjali Joshi&quot;, &quot;Thyroid, Fatigue&quot;},
+        {&quot;Deepak Mehta&quot;, &quot;Diabetes, Obesity&quot;},
+        {&quot;Sakshi Gupta&quot;, &quot;Flu, Cold&quot;}
+    };
+
+    // Input keyword to search
+    string keyword;
+    cout &lt;&lt; &quot;Enter keyword to search (e.g., patient name or condition): &quot;;
+    getline(cin, keyword);
+
+    // Search for the keyword in patient records
+    cout &lt;&lt; &quot;\nSearch Results:&quot; &lt;&lt; endl;
+    bool found = false;
+    for (const auto &amp;record : patientRecords) {
+        if (bruteForceSearch(record.first, keyword) || bruteForceSearch(record.second, keyword)) {
+            cout &lt;&lt; &quot;Name: &quot; &lt;&lt; record.first &lt;&lt; &quot;, Conditions: &quot; &lt;&lt; record.second &lt;&lt; &quot;\n&quot;;
+            found = true;
+        }
+    }
+
+    if (!found) {
+        cout &lt;&lt; &quot;No matching records found for &quot; &lt;&lt; keyword &lt;&lt; &quot;.&quot; &lt;&lt; endl;
+    }
+}
+
+int main() {
+    int choice;
+    do {
+        cout &lt;&lt; &quot;\nMenu:&quot; &lt;&lt; endl;
+        cout &lt;&lt; &quot;1. Disease spread simulation using BFS&quot; &lt;&lt; endl;
+        cout &lt;&lt; &quot;2. Shortest path calculation using Dijkstra&#39;s algorithm&quot; &lt;&lt; endl;
+        cout &lt;&lt; &quot;3. Sorting patients by severity using Merge Sort&quot; &lt;&lt; endl;
+        cout &lt;&lt; &quot;4. Brute-force string search for patient records&quot; &lt;&lt; endl;
+        cout &lt;&lt; &quot;5. Exit&quot; &lt;&lt; endl;
+        cout &lt;&lt; &quot;Enter your choice (1-5): &quot;;
+        cin &gt;&gt; choice;
+        cin.ignore(); // To handle the newline character after input
+
+        switch (choice) {
+            case 1:
+                diseaseSpreadSimulation();
+                break;
+            case 2:
+                shortestPathCalculation();
+                break;
+            case 3:
+                patientSortingBySeverity();
+                break;
+            case 4:
+                bruteForceStringSearch();
+                break;
+            case 5:
+                cout &lt;&lt; &quot;Exiting program.&quot; &lt;&lt; endl;
+                break;
+            default:
+                cout &lt;&lt; &quot;Invalid choice. Please try again.&quot; &lt;&lt; endl;
+        }
+    } while (choice != 5);
+
+    return 0;
+}
+        </pre>
     </div>
-
-    <div class="results">
-        <div id="diseaseSpread" class="result-item" style="display: none;">
-            <h2>Disease Spread Simulation (BFS)</h2>
-            <p>Starting Neighborhood: Hebbal</p>
-            <p>Disease Spread Order: Hebbal, Chamundi Hill, Saraswathipuram, Vijayanagar, Nanjangud, Bannimantap, Lakshmipuram, Kesare</p>
-        </div>
-
-        <div id="shortestPath" class="result-item" style="display: none;">
-            <h2>Shortest Path Calculation (Dijkstra's)</h2>
-            <p>Area: Vijayanagar</p>
-            <p>The nearest hospital to Vijayanagar is Apollo BGS Hospital at a distance of 4 km.</p>
-        </div>
-
-        <div id="sortingPatients" class="result-item" style="display: none;">
-            <h2>Patients Sorted by Severity (Merge Sort)</h2>
-            <ul>
-                <li>Amit Verma - Severity: 10</li>
-                <li>Ravi Kumar - Severity: 9</li>
-                <li>Abhay Singh - Severity: 8</li>
-                <li>Anjali Joshi - Severity: 7</li>
-                <li>Sneha Patel - Severity: 6</li>
-                <li>Priya Sharma - Severity: 5</li>
-                <li>Sakshi Gupta - Severity: 4</li>
-                <li>Deepak Mehta - Severity: 3</li>
-            </ul>
-        </div>
-
-        <div id="searchResults" class="result-item" style="display: none;">
-            <h2>Brute-force String Search Results</h2>
-            <p><strong>Name:</strong> Ravi Kumar, <strong>Conditions:</strong> Diabetes, Hypertension</p>
-            <p><strong>Name:</strong> Deepak Mehta, <strong>Conditions:</strong> Diabetes, Obesity</p>
-        </div>
-    </div>
-
-    <script>
-        function showDiseaseSpread() {
-            document.getElementById("diseaseSpread").style.display = "block";
-            document.getElementById("shortestPath").style.display = "none";
-            document.getElementById("sortingPatients").style.display = "none";
-            document.getElementById("searchResults").style.display = "none";
-        }
-
-        function showShortestPath() {
-            document.getElementById("diseaseSpread").style.display = "none";
-            document.getElementById("shortestPath").style.display = "block";
-            document.getElementById("sortingPatients").style.display = "none";
-            document.getElementById("searchResults").style.display = "none";
-        }
-
-        function showSortingPatients() {
-            document.getElementById("diseaseSpread").style.display = "none";
-            document.getElementById("shortestPath").style.display = "none";
-            document.getElementById("sortingPatients").style.display = "block";
-            document.getElementById("searchResults").style.display = "none";
-        }
-
-        function showSearchResults() {
-            document.getElementById("diseaseSpread").style.display = "none";
-            document.getElementById("shortestPath").style.display = "none";
-            document.getElementById("sortingPatients").style.display = "none";
-            document.getElementById("searchResults").style.display = "block";
-        }
-    </script>
 </body>
 </html>
