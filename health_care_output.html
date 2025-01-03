@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Simulation Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .menu {
+            margin-bottom: 20px;
+        }
+        .menu button {
+            margin: 10px;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        .results {
+            margin-top: 30px;
+        }
+        .results h2 {
+            margin-bottom: 10px;
+        }
+        .result-item {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Healthcare Simulation Results</h1>
+
+    <div class="menu">
+        <button onclick="showDiseaseSpread()">Disease Spread Simulation (BFS)</button>
+        <button onclick="showShortestPath()">Shortest Path Calculation (Dijkstra's)</button>
+        <button onclick="showSortingPatients()">Sorting Patients by Severity (Merge Sort)</button>
+        <button onclick="showSearchResults()">Brute-force String Search</button>
+    </div>
+
+    <div class="results">
+        <div id="diseaseSpread" class="result-item" style="display: none;">
+            <h2>Disease Spread Simulation (BFS)</h2>
+            <p>Starting Neighborhood: Hebbal</p>
+            <p>Disease Spread Order: Hebbal, Chamundi Hill, Saraswathipuram, Vijayanagar, Nanjangud, Bannimantap, Lakshmipuram, Kesare</p>
+        </div>
+
+        <div id="shortestPath" class="result-item" style="display: none;">
+            <h2>Shortest Path Calculation (Dijkstra's)</h2>
+            <p>Area: Vijayanagar</p>
+            <p>The nearest hospital to Vijayanagar is Apollo BGS Hospital at a distance of 4 km.</p>
+        </div>
+
+        <div id="sortingPatients" class="result-item" style="display: none;">
+            <h2>Patients Sorted by Severity (Merge Sort)</h2>
+            <ul>
+                <li>Amit Verma - Severity: 10</li>
+                <li>Ravi Kumar - Severity: 9</li>
+                <li>Abhay Singh - Severity: 8</li>
+                <li>Anjali Joshi - Severity: 7</li>
+                <li>Sneha Patel - Severity: 6</li>
+                <li>Priya Sharma - Severity: 5</li>
+                <li>Sakshi Gupta - Severity: 4</li>
+                <li>Deepak Mehta - Severity: 3</li>
+            </ul>
+        </div>
+
+        <div id="searchResults" class="result-item" style="display: none;">
+            <h2>Brute-force String Search Results</h2>
+            <p><strong>Name:</strong> Ravi Kumar, <strong>Conditions:</strong> Diabetes, Hypertension</p>
+            <p><strong>Name:</strong> Deepak Mehta, <strong>Conditions:</strong> Diabetes, Obesity</p>
+        </div>
+    </div>
+
+    <script>
+        function showDiseaseSpread() {
+            document.getElementById("diseaseSpread").style.display = "block";
+            document.getElementById("shortestPath").style.display = "none";
+            document.getElementById("sortingPatients").style.display = "none";
+            document.getElementById("searchResults").style.display = "none";
+        }
+
+        function showShortestPath() {
+            document.getElementById("diseaseSpread").style.display = "none";
+            document.getElementById("shortestPath").style.display = "block";
+            document.getElementById("sortingPatients").style.display = "none";
+            document.getElementById("searchResults").style.display = "none";
+        }
+
+        function showSortingPatients() {
+            document.getElementById("diseaseSpread").style.display = "none";
+            document.getElementById("shortestPath").style.display = "none";
+            document.getElementById("sortingPatients").style.display = "block";
+            document.getElementById("searchResults").style.display = "none";
+        }
+
+        function showSearchResults() {
+            document.getElementById("diseaseSpread").style.display = "none";
+            document.getElementById("shortestPath").style.display = "none";
+            document.getElementById("sortingPatients").style.display = "none";
+            document.getElementById("searchResults").style.display = "block";
+        }
+    </script>
+</body>
+</html>
