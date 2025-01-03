@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run C++ Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        #runButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        #runButton:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>C++ Code for Waste Management</h2>
+
+    <!-- C++ Code Display -->
+    <pre id="cppCode">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;unordered_map&gt;
+#include &lt;queue&gt;
+#include &lt;unordered_set&gt;
+#include &lt;climits&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+// Structure to represent hazardous waste items
+struct WasteItem {
+    string name;
+    int priority;  // Hazardous level (higher priority means more hazardous)
+};
+
+// Structure to represent patient information
+struct Patient {
+    string name;
+    int severity; // Higher severity value means higher priority
+};
+
+// Function to perform BFS for efficient waste collection and distribution
+vector&lt;string&gt; bfsWasteCollection(unordered_map&lt;string, vector&lt;string&gt;&gt; &amp;graph, const string &amp;startArea) {
+    vector&lt;string&gt; collectionOrder;
+    unordered_set&lt;string&gt; visited;
+    queue&lt;string&gt; q;
+
+    // Start BFS from the given area
+    q.push(startArea);
+    visited.insert(startArea);
+
+    while (!q.empty()) {
+        string current = q.front();
+        q.pop();
+        collectionOrder.push_back(current);
+
+        // Visit all neighboring areas
+        for (const string &amp;neighbor : graph[current]) {
+            if (visited.find(neighbor) == visited.end()) {
+                visited.insert(neighbor);
+                q.push(neighbor);
+            }
+        }
+    }
+
+    return collectionOrder;
+}
+
+// Function to perform Dijkstra's Algorithm for Recycling Facility Optimization
+vector&lt;string&gt; dijkstraRecyclingOptimization(unordered_map&lt;string, vector&lt;pair&lt;string, int&gt;&gt;&gt; &amp;graph, const string &amp;startArea, const string &amp;facility) {
+    unordered_map&lt;string, int&gt; distances;
+    unordered_map&lt;string, string&gt; previous;
+    priority_queue&lt;pair&lt;int, string&gt;, vector&lt;pair&lt;int, string&gt;&gt;, greater&lt;pair&lt;int, string&gt;&gt;&gt; pq;  // Min-heap (distance, node)
+
+    // Initialize distances to infinity
+    for (const auto &amp;entry : graph) {
+        distances[entry.first] = INT_MAX;
+    }
+    distances[startArea] = 0;
+    pq.push({0, startArea});
+
+    while (!pq.empty()) {
+        string currentArea = pq.top().second;
+        pq.pop();
+
+        // If we reach the recycling facility, stop
+        if (currentArea == facility) {
+            break;
+        }
+
+        for (const auto &amp;neighbor : graph[currentArea]) {
+            const string &amp;neighborArea = neighbor.first;
+            int edgeWeight = neighbor.second;
+
+            int newDist = distances[currentArea] + edgeWeight;
+            if (newDist &lt; distances[neighborArea]) {
+                distances[neighborArea] = newDist;
+                previous[neighborArea] = currentArea;
+                pq.push({newDist, neighborArea});
+            }
+        }
+    }
+
+    // Reconstruct the shortest path from startArea to facility
+    vector&lt;string&gt; path;
+    for (string at = facility; at != ""; at = previous[at]) {
+        path.push_back(at);
+    }
+    reverse(path.begin(), path.end());
+    return path;
+}
+
+// Function to heapify the max-heap for hazardous waste prioritization
+void heapify(vector&lt;WasteItem&gt;&amp; heap, int n, int i) {
+    int largest = i;  // Initialize largest as root
+    int left = 2 * i + 1;  // Left child
+    int right = 2 * i + 2;  // Right child
+
+    // If left child is larger than root
+    if (left &lt; n &amp;&amp; heap[left].priority &gt; heap[largest].priority) {
+        largest = left;
+    }
+
+    // If right child is larger than largest so far
+    if (right &lt; n &amp;&amp; heap[right].priority &gt; heap[largest].priority) {
+        largest = right;
+    }
+
+    // If largest is not root
+    if (largest != i) {
+        swap(heap[i], heap[largest]);  // Swap root with the largest child
+        heapify(heap, n, largest);  // Recursively heapify the affected subtree
+    }
+}
+
+// Function to implement heap sort for hazardous waste prioritization
+void heapSort(vector&lt;WasteItem&gt;&amp; heap) {
+    int n = heap.size();
+
+    // Build a max heap
+    for (int i = n / 2 - 1; i >= 0; i--) {
+        heapify(heap, n, i);
+    }
+
+    // One by one extract elements from heap
+    for (int i = n - 1; i &gt; 0; i--) {
+        // Move current root to end
+        swap(heap[0], heap[i]);
+
+        // Call heapify on the reduced heap
+        heapify(heap, i, 0);
+    }
+}
+
+// Function to merge two sorted halves for waste tracking
+void merge(vector&lt;Patient&gt; &amp;patients, int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    vector&lt;Patient&gt; leftHalf(n1);
+    vector&lt;Patient&gt; rightHalf(n2);
+
+    // Copy data to temporary arrays
+    for (int i = 0; i &lt; n1; ++i)
+        leftHalf[i] = patients[left + i];
+    for (int i = 0; i &lt; n2; ++i)
+        rightHalf[i] = patients[mid + 1 + i];
+
+    // Merge the temporary arrays back into the main array
+    int i = 0, j = 0, k = left;
+    while (i &lt; n1 &amp;&amp; j &lt; n2) {
+        if (leftHalf[i].severity &gt;= rightHalf[j].severity) {
+            patients[k] = leftHalf[i];
+            i++;
+        } else {
+            patients[k] = rightHalf[j];
+            j++;
+        }
+        k++;
+    }
+
+    // Copy remaining elements, if any
+    while (i &lt; n1) {
+        patients[k] = leftHalf[i];
+        i++;
+        k++;
+    }
+    while (j &lt; n2) {
+        patients[k] = rightHalf[j];
+        j++;
+        k++;
+    }
+}
+
+// Function to implement Merge Sort for waste tracking and monitoring
+void mergeSort(vector&lt;Patient&gt; &amp;patients, int left, int right) {
+    if (left &lt; right) {
+        int mid = left + (right - left) / 2;
+
+        // Recursively sort the halves
+        mergeSort(patients, left, mid);
+        mergeSort(patients, mid + 1, right);
+
+        // Merge the sorted halves
+        merge(patients, left, mid, right);
+    }
+}
+
+// Main function with menu
+int main() {
+    unordered_map&lt;string, vector&lt;string&gt;&gt; wasteGraph = {
+        {"Vijayanagar", {"Jayalakshmipuram", "Nazarbad", "Gokulam"}},
+        {"Jayalakshmipuram", {"Vijayanagar", "Nazarbad", "Kuvempunagar"}},
+        {"Nazarbad", {"Vijayanagar", "Jayalakshmipuram", "Shivaji Nagar"}},
+        {"Gokulam", {"Vijayanagar", "Mysore Palace"}},
+        {"Kuvempunagar", {"Jayalakshmipuram", "Saraswathipuram"}},
+        {"Shivaji Nagar", {"Nazarbad", "Mandi"}},
+        {"Mysore Palace", {"Gokulam", "Chamundi Hill"}},
+        {"Saraswathipuram", {"Kuvempunagar", "Jayanagar"}},
+        {"Mandi", {"Shivaji Nagar", "Dhanvantri Nagar"}},
+        {"Chamundi Hill", {"Mysore Palace", "Chamaraja MoHalla"}},
+        {"Dhanvantri Nagar", {"Mandi", "Vontikoppal"}},
+        {"Chamaraja MoHalla", {"Chamundi Hill", "Aishwarya Lake"}},
+        {"Vontikoppal", {"Dhanvantri Nagar"}},
+        {"Aishwarya Lake", {"Chamaraja MoHalla"}}
+    };
+
+    unordered_map&lt;string, vector&lt;pair&lt;string, int&gt;&gt;&gt; transportGraph = {
+        {"Vijayanagar", {{"Jayalakshmipuram", 10}, {"Nazarbad", 12}, {"Gokulam", 15}}},
+        {"Jayalakshmipuram", {{"Vijayanagar", 10}, {"Nazarbad", 5}, {"Kuvempunagar", 12}}},
+        {"Nazarbad", {{"Vijayanagar", 12}, {"Jayalakshmipuram", 5}, {"Shivaji Nagar", 8}}},
+        {"Gokulam", {{"Vijayanagar", 15}, {"Mysore Palace", 7}, {"Facility", 10}}},
+        {"Facility", {{"Gokulam", 10}}}
+    };
+
+    vector&lt;WasteItem&gt; wasteItems = {
+        {"Chemical X", 0},
+        {"Biological Waste", 0},
+        {"Flammable Waste", 0},
+        {"Heavy Metals", 0},
+        {"Plastic Waste", 0},
+        {"E-Waste", 0},
+        {"Radioactive Material", 0}
+    };
+
+    vector&lt;Patient&gt; patients = {
+        {"Ravi Kumar", 9},
+        {"Sneha Patel", 6},
+        {"Abhay Singh", 8},
+        {"Priya Sharma", 5},
+        {"Amit Verma", 10},
+        {"Anjali Joshi", 7},
+        {"Deepak Mehta", 3},
+        {"Sakshi Gupta", 4}
+    };
+
+    int choice;
+    do {
+        cout &lt;&lt; "\nMenu:\n";
+        cout &lt;&lt; "1. Efficient Waste Collection and Distribution (BFS)\n";
+        cout &lt;&lt; "2. Recycling Facility Optimization (Dijkstra's Algorithm)\n";
+        cout &lt;&lt; "3. Hazardous Waste Prioritization (Heap Sort)\n";
+        cout &lt;&lt; "4. Waste Tracking and Monitoring (Merge Sort)\n";
+        cout &lt;&lt; "5. Exit\n";
+        cout &lt;&lt; "Enter your choice: ";
+        cin &gt;&gt; choice;
+
+        switch (choice) {
+            case 1: {
+                string startArea;
+                cout &lt;&lt; "Enter the starting area for waste collection: ";
+                cin &gt;&gt; startArea;
+                vector&lt;string&gt; collectionOrder = bfsWasteCollection(wasteGraph, startArea);
+                cout &lt;&lt; "Optimal Waste Collection Order starting from " &lt;&lt; startArea &lt;&lt; ":\n";
+                for (const string &lt;&lt; area : collectionOrder) {
+                    cout &lt;&lt; area &lt;&lt; " -&gt; ";
+                }
+                cout &lt;&lt; "END\n";
+                break;
+            }
+            case 2: {
+                string facility = "Facility";
+                string startArea;
+                cout &lt;&lt; "Enter the starting area for recycling facility optimization: ";
+                cin &gt;&gt; startArea;
+                vector&lt;string&gt; path = dijkstraRecyclingOptimization(transportGraph, startArea, facility);
+                cout &lt;&lt; "Optimal path to the recycling facility: ";
+                for (const string &lt;&lt; area : path) {
+                    cout &lt;&lt; area &lt;&lt; " -&gt; ";
+                }
+                cout &lt;&lt; "END\n";
+                break;
+            }
+            case 3: {
+                // Ensure proper input for hazardous waste priority
+                cout &lt;&lt; "Enter priority for each waste item (higher number means more hazardous):\n";
+                for (auto &lt;&lt; item : wasteItems) {
+                    cout &lt;&lt; "Enter priority for " &lt;&lt; item.name &lt;&lt; ": ";
+                    cin &gt;&gt; item.priority;
+                }
+
+                cout &lt;&lt; "\nBefore prioritization:\n";
+                for (const auto &lt;&lt; item : wasteItems) {
+                    cout &lt;&lt; item.name &lt;&lt; " with priority " &lt;&lt; item.priority &lt;&lt; endl;
+                }
+
+                // Perform heap sort to prioritize hazardous waste
+                heapSort(wasteItems);
+
+                cout &lt;&lt; "\nAfter prioritization (most hazardous first):\n";
+                for (const auto &lt;&lt; item : wasteItems) {
+                    cout &lt;&lt; item.name &lt;&lt; " with priority " &lt;&lt; item.priority &lt;&lt; endl;
+                }
+                break;
+            }
+
+            case 4: {
+                cout &lt;&lt; "Before waste tracking:\n";
+                for (const auto &lt;&lt; patient : patients) {
+                    cout &lt;&lt; patient.name &lt;&lt; " with severity " &lt;&lt; patient.severity &lt;&lt; endl;
+                }
+                mergeSort(patients, 0, patients.size() - 1);
+                cout &lt;&lt; "\nAfter waste tracking:\n";
+                for (const auto &lt;&lt; patient : patients) {
+                    cout &lt;&lt; patient.name &lt;&lt; " with severity " &lt;&lt; patient.severity &lt;&lt; endl;
+                }
+                break;
+            }
+            case 5:
+                cout &lt;&lt; "Exiting program.\n";
+                break;
+            default:
+                cout &lt;&lt; "Invalid choice! Please try again.\n";
+        }
+    } while (choice != 5);
+
+    return 0;
+}
+</pre>
+
+    <!-- Button to Run Code -->
+    <button id="runButton">RUN CODE</button>
+
+    <script>
+        document.getElementById('runButton').addEventListener('click', function() {
+            alert("Running C++ code is not supported in the browser directly. Please run the code in an appropriate IDE or compiler.");
+        });
+    </script>
+
+</body>
+</html>
