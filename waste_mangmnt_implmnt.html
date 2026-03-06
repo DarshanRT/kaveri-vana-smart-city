@@ -292,7 +292,7 @@ int main() {
                 cin &gt;&gt; startArea;
                 vector&lt;string&gt; collectionOrder = bfsWasteCollection(wasteGraph, startArea);
                 cout &lt;&lt; "Optimal Waste Collection Order starting from " &lt;&lt; startArea &lt;&lt; ":\n";
-                for (const string &lt;&lt; area : collectionOrder) {
+                for (const string &amp;area : collectionOrder) {
                     cout &lt;&lt; area &lt;&lt; " -&gt; ";
                 }
                 cout &lt;&lt; "END\n";
@@ -305,7 +305,7 @@ int main() {
                 cin &gt;&gt; startArea;
                 vector&lt;string&gt; path = dijkstraRecyclingOptimization(transportGraph, startArea, facility);
                 cout &lt;&lt; "Optimal path to the recycling facility: ";
-                for (const string &lt;&lt; area : path) {
+                for (const string &amp;area : path) {
                     cout &lt;&lt; area &lt;&lt; " -&gt; ";
                 }
                 cout &lt;&lt; "END\n";
@@ -314,13 +314,13 @@ int main() {
             case 3: {
                 // Ensure proper input for hazardous waste priority
                 cout &lt;&lt; "Enter priority for each waste item (higher number means more hazardous):\n";
-                for (auto &lt;&lt; item : wasteItems) {
+                for (auto &amp;item : wasteItems) {
                     cout &lt;&lt; "Enter priority for " &lt;&lt; item.name &lt;&lt; ": ";
                     cin &gt;&gt; item.priority;
                 }
 
                 cout &lt;&lt; "\nBefore prioritization:\n";
-                for (const auto &lt;&lt; item : wasteItems) {
+                for (const auto &amp;item : wasteItems) {
                     cout &lt;&lt; item.name &lt;&lt; " with priority " &lt;&lt; item.priority &lt;&lt; endl;
                 }
 
@@ -328,7 +328,7 @@ int main() {
                 heapSort(wasteItems);
 
                 cout &lt;&lt; "\nAfter prioritization (most hazardous first):\n";
-                for (const auto &lt;&lt; item : wasteItems) {
+                for (const auto &amp;item : wasteItems) {
                     cout &lt;&lt; item.name &lt;&lt; " with priority " &lt;&lt; item.priority &lt;&lt; endl;
                 }
                 break;
@@ -336,12 +336,12 @@ int main() {
 
             case 4: {
                 cout &lt;&lt; "Before waste tracking:\n";
-                for (const auto &lt;&lt; patient : patients) {
+                for (const auto &amp;patient : patients) {
                     cout &lt;&lt; patient.name &lt;&lt; " with severity " &lt;&lt; patient.severity &lt;&lt; endl;
                 }
                 mergeSort(patients, 0, patients.size() - 1);
                 cout &lt;&lt; "\nAfter waste tracking:\n";
-                for (const auto &lt;&lt; patient : patients) {
+                for (const auto &amp;patient : patients) {
                     cout &lt;&lt; patient.name &lt;&lt; " with severity " &lt;&lt; patient.severity &lt;&lt; endl;
                 }
                 break;
